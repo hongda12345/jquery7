@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery-3.2.1.js"></script>
+</head>
+<style>
+	*{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		box-sizing: border-box;
+	}
+	.slide{
+		width: 800px;
+		height: 500px;
+		background: #ccc;
+		margin: 0 auto;
+	}
+	.slide li{
+		width: 160px;
+		height: 50px;
+		background: red;
+		float: left;
+		border: 1px solid #000;
+		font-size: 30px;
+		font-weight: 500;
+		color: #fff;
+		text-align: center;
+		cursor: pointer;
+		margin-bottom: 20px;
+	}
+	.slide li .item{
+        width: 100%;
+        height: 300px;
+        background: blue;
+        margin-bottom: 10px;
+        text-align: center;
+        line-height: 50px;
+        color: #fff;
+        font-size: 30px;
+        display: none;
+	}
+	.slide li h3{
+		width: 100%;
+        height: 40px;
+        border-bottom: 2px solid #ccc;
+        margin-bottom: 10px;
+        text-align: center;
+        line-height: 40px;
+        color: #fff;
+        font-size: 24px;
+	}
+	ul.imgs{
+		width: 750px;
+		height: 400px;
+		background: #ccc;
+		margin: 30px auto;
+		position: relative;
+		overflow: hidden;
+	}
+	ul.imgs li{
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 100%;
+	}
+</style>
+<body>
+	<ul class="slide">
+		<li>教育技术
+			<div class="item">
+			    <h3>教育技术学</h3>
+			    <h3>心理学</h3>
+			    <h3>小学教育</h3>
+			    <h3>学前教育</h3>
+			    <h3>数字媒体</h3>
+			</div>
+		</li>
+		<li>教育技术
+			<div class="item">
+			    <h3>教育技术学</h3>
+			    <h3>心理学</h3>
+			    <h3>小学教育</h3>
+			    <h3>学前教育</h3>
+			    <h3>数字媒体</h3>
+			</div>
+		</li>
+		<li>教育技术
+			<div class="item">
+			    <h3>教育技术学</h3>
+			    <h3>心理学</h3>
+			    <h3>小学教育</h3>
+			    <h3>学前教育</h3>
+			    <h3>数字媒体</h3>
+			</div>
+		</li>
+		<li>教育技术
+			<div class="item">
+			    <h3>教育技术学</h3>
+			    <h3>心理学</h3>
+			    <h3>小学教育</h3>
+			    <h3>学前教育</h3>
+			    <h3>数字媒体</h3>
+			</div>
+		</li>
+		<li>教育技术
+			<div class="item">
+			    <h3>教育技术学</h3>
+			    <h3>心理学</h3>
+			    <h3>小学教育</h3>
+			    <h3>学前教育</h3>
+			    <h3>数字媒体</h3>
+			</div>
+		</li>
+	</ul>
+	<ul class="imgs">
+		<li style="background: red;left:0"></li>
+		<li style="background: yellow;"></li>
+		<li style="background: green;"></li>
+		<li style="background: hotpink;"></li>
+		<li style="background: blue;"></li>
+	</ul>
+	<script>
+	$(function(){
+		let lis=$('.slide>li');
+		lis.on('mouseenter mouseleave',function(){
+            $(this).find('.item').stop();
+            $(this).find('.item').slideToggle();
+		})
+		let img=$('.imgs>li');
+		let imgw=$('li','.imgs').width();
+		let now=next=0;
+		let t=setInterval(move, 1000);
+		function move(){
+            next++;
+            if(next==img.length){
+            	next=0;
+            }
+            img.eq(next).css('left',imgw);
+            img.eq(next).animate({left:0});
+            img.eq(now).animate({left:-imgw});
+            now=next;
+		}
+	})
+	</script>
+</body>
+</html>
